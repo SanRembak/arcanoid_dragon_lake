@@ -10,6 +10,8 @@ void Game::PreInit(int& width, int& height, bool& fullscreen)
 
 bool Game::Init() 
 {
+	_platform = new Platform(380, 400, 0.3);
+
 	return true;
 }
 
@@ -19,6 +21,7 @@ void Game::Close() {
 
 bool Game::Tick() {
 	drawTestBackground();
+	_platform->Draw();
 	return false;
 }
 
@@ -31,7 +34,7 @@ void Game::onMouseButtonClick(FRMouseButton button, bool isReleased) {
 }
 
 void Game::onKeyPressed(FRKey k) {
-
+	_platform->HandleKey(k);
 }
 
 void Game::onKeyReleased(FRKey k) {

@@ -1,6 +1,6 @@
 #pragma once
 #include "Framework.h"
-#include <iostream>
+#include "Platform.h"
 
 class Game : public Framework {
 
@@ -17,4 +17,7 @@ public:
 	virtual void onMouseButtonClick(FRMouseButton button, bool isReleased);
 	virtual void onKeyPressed(FRKey k);
 	virtual void onKeyReleased(FRKey k);
+
+private:
+	Platform* _platform;
 };
