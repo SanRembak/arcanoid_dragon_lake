@@ -1,0 +1,3 @@
+﻿  main.cpp
+main.obj : error LNK2019: unresolved external symbol "void __cdecl drawTestBackground(void)" (?drawTestBackground@@YAXXZ) referenced in function main
+E:\Unity\Projects\Git\arcanoid_dragon_lake\x64\Debug\ARCANOID_DRAGONS_LAKE.exe : fatal error LNK1120: 1 unresolved externals
