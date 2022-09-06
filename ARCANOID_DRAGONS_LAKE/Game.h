@@ -1,6 +1,7 @@
 #pragma once
 #include "Framework.h"
 #include "Platform.h"
+#include "Ball.h"
 
 class Game : public Framework {
 
@@ -19,5 +20,12 @@ public:
 	virtual void onKeyReleased(FRKey k);
 
 private:
+	Vector2Float _currentMousePos;
+
 	Platform* _platform;
+	Ball* _ball;
+
+	bool _isGameStarted;
+
+	void LaunchBall(Vector2Float to);
 };
