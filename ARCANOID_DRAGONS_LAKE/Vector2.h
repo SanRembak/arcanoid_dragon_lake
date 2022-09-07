@@ -121,3 +121,11 @@ static struct Vector2Float
 		return Vector2Float(x, y);
 	}
 };
+
+static float GetDistance(Vector2Float a, Vector2Float b)
+{
+	Vector2Float direction = b - a;
+	float distance = sqrt(direction.x * direction.x + direction.y * direction.y);
+
+	return distance;
+}

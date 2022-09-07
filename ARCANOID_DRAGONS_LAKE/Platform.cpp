@@ -3,7 +3,7 @@
 Platform::Platform(Vector2 position, float size)
 {
 	_level = 1;
-	_speed = 30;
+	_speed = 50;
 	_sprite = createSprite(_pathSpriteLevel_1);
 
 	int width{ 0 }, height{ 0 };
@@ -48,12 +48,12 @@ void Platform::ClampPos()
 
 	Vector2Float newPosition = _position;
 
-	if (newPosition.x < 0)
+	if (newPosition.x <= 0)
 	{
 		newPosition.x = 0;
 	}
 
-	else if (newPosition.x + spriteWidth > screenWidth)
+	else if (newPosition.x + spriteWidth >= screenWidth)
 	{
 		newPosition.x = screenWidth - spriteWidth;
 	}
@@ -65,16 +65,16 @@ void Platform::ChangePosition(Vector2Float position)
 {
 	Vector2Float relativeDiffOfBall;
 
-	if (_ball != NULL)
+	if (ball != NULL)
 	{
-		relativeDiffOfBall = _ball->GetPos() - _position;
+		relativeDiffOfBall = ball->GetPos() - _position;
 	}
 
 	Object::ChangePosition(position);
 
-	if (_ball != NULL)
+	if (ball != NULL)
 	{
-		_ball->SetPos(_position + relativeDiffOfBall);
+		ball->SetPos(_position + relativeDiffOfBall);
 	}
 }
 
@@ -82,15 +82,15 @@ void Platform::SetPos(Vector2Float position)
 {
 	Vector2Float relativeDiffOfBall;
 
-	if (_ball != NULL)
+	if (ball != NULL)
 	{
-		relativeDiffOfBall = _ball->GetPos() - _position;
+		relativeDiffOfBall = ball->GetPos() - _position;
 	}
 
 	_position = position;
 
-	if (_ball != NULL)
+	if (ball != NULL)
 	{
-		_ball->SetPos(_position + relativeDiffOfBall);
+		ball->SetPos(_position + relativeDiffOfBall);
 	}
 }

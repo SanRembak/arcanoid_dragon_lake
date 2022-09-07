@@ -3,6 +3,7 @@
 #include "Object.h"
 #include "Ball.h"
 
+class Ball;
 class Platform : public Object
 {
 public:
@@ -12,7 +13,7 @@ public:
 	void virtual Draw();
 	void virtual SetPos(Vector2Float position);
 
-	Ball* _ball;
+	Ball* ball;
 protected:
 	void virtual ClampPos();
 	void virtual ChangePosition(Vector2Float position) override;

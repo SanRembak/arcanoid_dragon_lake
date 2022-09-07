@@ -15,6 +15,13 @@ public:
 		return _position;
 	}
 
+	Vector2Float virtual GetCenterPos()
+	{
+		Vector2 spriteHalfSize = GetSize() / 2;
+
+		return Vector2Float(_position.x + spriteHalfSize.x, _position.y + spriteHalfSize.y);
+	}
+
 	Vector2 virtual GetSize()
 	{
 		Vector2 spriteSize;
@@ -44,6 +51,7 @@ public:
 	}
 
 	void virtual HandleKey(FRKey key) {};
+	void virtual OnCollisionHit() {};
 	void virtual Draw() = 0;
 protected:
 	Sprite* _sprite;

@@ -18,7 +18,7 @@ bool Game::Init()
 	_platform = new Platform(screenSize, 0.3);
 	_ball = new Ball(screenSize - Vector2(0, _platform->GetSize().y), 1);
 
-	_platform->_ball = _ball;
+	_platform->ball = _ball;
 
 	return true;
 }
@@ -33,6 +33,7 @@ bool Game::Tick() {
 	_platform->Draw();
 	_ball->Fly();
 	_ball->Draw();
+	_ball->HandleCollisionWithObject(_platform);
 
 	return false;
 }
@@ -68,6 +69,7 @@ void Game::LaunchBall(Vector2Float to)
 		normalVector *= -1;
 
 	_ball->SetVelocity(normalVector);
+	_platform->ball = NULL;
 
 	_isGameStarted = true;
 }
