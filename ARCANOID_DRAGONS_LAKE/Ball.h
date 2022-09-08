@@ -7,6 +7,7 @@ class Platform;
 class Ball : public Object
 {
 public:
+	Ball();
 	Ball(Vector2 position, float size);
 	virtual void Draw() override;
 
@@ -21,6 +22,10 @@ public:
 	void CheckCollisionWithScreenBorders();
 	void HandleCollisionWithObject(Object* object);
 	bool CheckCollisionWithObject(Object* object);
+
+	bool isLaunched;
+	bool _isAlive;
+
 private:
 	const char* _ballSprite = "E:\\Unity\\Projects\\Git\\arcanoid_dragon_lake\\ARCANOID_DRAGONS_LAKE\\data\\ball\\ball_1.png";
 

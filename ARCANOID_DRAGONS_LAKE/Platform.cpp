@@ -61,37 +61,3 @@ void Platform::ClampPos()
 
 	SetPos(newPosition);
 }
-
-void Platform::ChangePosition(Vector2Float position)
-{
-	Vector2Float relativeDiffOfBall;
-
-	if (ball != NULL)
-	{
-		relativeDiffOfBall = ball->GetPos() - _position;
-	}
-
-	Object::ChangePosition(position);
-
-	if (ball != NULL)
-	{
-		ball->SetPos(_position + relativeDiffOfBall);
-	}
-}
-
-void Platform::SetPos(Vector2Float position)
-{
-	Vector2Float relativeDiffOfBall;
-
-	if (ball != NULL)
-	{
-		relativeDiffOfBall = ball->GetPos() - _position;
-	}
-
-	_position = position;
-
-	if (ball != NULL)
-	{
-		ball->SetPos(_position + relativeDiffOfBall);
-	}
-}

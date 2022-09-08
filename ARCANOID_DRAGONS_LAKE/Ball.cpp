@@ -1,12 +1,17 @@
 #include "Ball.h"
 #include "Platform.h"
 
-Ball::Ball(Vector2 position, float scale)
+Ball::Ball()
 {
+	isLaunched = false;
+	_isAlive = true;
 	_level = 1;
 	_speed = 2;
 	_sprite = createSprite(_ballSprite);
+}
 
+Ball::Ball(Vector2 position, float scale) : Ball()
+{
 	int width{ 0 }, height{ 0 };
 	getSpriteSize(_sprite, width, height);
 
@@ -55,8 +60,8 @@ void Ball::CheckCollisionWithScreenBorders()
 
 	else if (_position.y + ballSize.y > screenSize.x)
 	{
-		_velocity.y *= -1;
-		_position.y = screenSize.x - ballSize.y;
+		_velocity = Vector2Float(0, 0);
+		_isAlive = false;
 	}
 }
 

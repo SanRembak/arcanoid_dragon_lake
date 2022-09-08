@@ -58,6 +58,12 @@ static struct Vector2
 
 static struct Vector2Float
 {
+	Vector2Float(Vector2 vector)
+	{
+		x = vector.x;
+		y = vector.y;
+	}
+
 	Vector2Float(float nx, float ny)
 	{
 		x = nx;
