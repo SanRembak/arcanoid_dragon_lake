@@ -58,7 +58,7 @@ public:
 
 	void virtual HandleKey(FRKey key) {};
 	void virtual OnCollisionHit() {};
-	void virtual Draw() = 0;
+	void virtual Draw() { drawSprite(_sprite, _position.x, _position.y); }
 protected:
 	Sprite* _sprite;
 	Vector2Float _position;

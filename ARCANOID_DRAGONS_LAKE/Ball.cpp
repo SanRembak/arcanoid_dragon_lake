@@ -1,12 +1,10 @@
 #include "Ball.h"
-#include "Platform.h"
 
 Ball::Ball()
 {
 	isLaunched = false;
 	_isAlive = true;
-	_level = 1;
-	_speed = 2;
+	_speed = 2.5;
 	_sprite = createSprite(_ballSprite);
 }
 
@@ -20,18 +18,6 @@ Ball::Ball(Vector2 position, float scale) : Ball()
 
 	_scale = scale;
 	_position.x = position.x - width / 2; _position.y = position.y;
-}
-
-void Ball::Draw()
-{
-	drawSprite(_sprite, _position.x, _position.y);
-}
-
-void Ball::Fly()
-{
-	_position += _velocity * _speed;
-
-	CheckCollisionWithScreenBorders();
 }
 
 void Ball::CheckCollisionWithScreenBorders()
@@ -62,78 +48,6 @@ void Ball::CheckCollisionWithScreenBorders()
 	{
 		_velocity = Vector2Float(0, 0);
 		_isAlive = false;
-	}
-}
-
-void Ball::HandleCollisionWithObject(Object* object)
-{
-	if (CheckCollisionWithObject(object))
-	{
-		ReflectVelocityRelativeToObject(object);
-		object->OnCollisionHit();
-	}
-}
-
-bool Ball::CheckCollisionWithObject(Object* object)
-{
-	Vector2 objectSize = object->GetSize();
-	Vector2 ballSize = GetSize();
-
-	Vector2Float objectCenterPosition = object->GetCenterPos();
-	Vector2Float ballCenterPosition = GetCenterPos();
-
-	Vector2Float directionFromObject = ballCenterPosition - objectCenterPosition;
-	Vector2Float objectToBallNormal = directionFromObject.normal();
-	Vector2Float ballNormal = objectToBallNormal * -1;
-
-	Vector2Float nearPointFromBall = ballCenterPosition +
-		Vector2Float(ballSize.x / 2 * ballNormal.x,
-			ballSize.y / 2 * ballNormal.y);
-
-	Vector2Float nearPointFromObject = objectCenterPosition +
-		Vector2Float(objectSize.x / 2 * objectToBallNormal.x,
-			objectSize.y / 2 * objectToBallNormal.y);
-
-	float distanceFromCenterToBall = GetDistance(objectCenterPosition, nearPointFromBall);
-	float distanceFromCenterToBorderObject = GetDistance(objectCenterPosition, nearPointFromObject);
-
-	return distanceFromCenterToBall <= distanceFromCenterToBorderObject;
-}
-
-void Ball::ReflectVelocityRelativeToObject(Object* object)
-{
-	Vector2Float topLeftPlatformNormalPos = (object->GetPos() - object->GetCenterPos()).normal();
-
-	Vector2Float objectCenterPosition = object->GetCenterPos();
-	Vector2Float ballCenterPosition = GetCenterPos();
-
-	Vector2Float directionFromObject = ballCenterPosition - objectCenterPosition;
-	Vector2Float objectToBallNormal = directionFromObject.normal();
-
-	float minX = topLeftPlatformNormalPos.x;
-	float maxX = topLeftPlatformNormalPos.x * -1;
-
-	float minY = topLeftPlatformNormalPos.y;
-	float maxY = topLeftPlatformNormalPos.y * -1;
-
-	if (objectToBallNormal.x > minX && objectToBallNormal.x < maxX)
-	{
-		_velocity.y *= -1;
-
-		if (objectToBallNormal.y < 0)
-			_position.y -= 1;
-		else
-			_position.y += 1;
-	}
-
-	if (objectToBallNormal.y > minY && objectToBallNormal.y < maxY)
-	{
-		_velocity.x *= -1;
-
-		if (objectToBallNormal.x < 0)
-			_position.x -= 1;
-		else
-			_position.x += 1;
 	}
 }
 

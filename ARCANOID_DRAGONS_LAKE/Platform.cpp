@@ -34,11 +34,6 @@ void Platform::HandleKey(FRKey key)
 	ChangePosition(direction);
 }
 
-void Platform::Draw()
-{
-	drawSprite(_sprite, _position.x, _position.y);
-}
-
 void Platform::ClampPos()
 {
 	int screenWidth, screenHeight;

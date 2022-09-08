@@ -10,7 +10,6 @@ public:
 	Platform(Vector2 position, float size);
 
 	void virtual HandleKey(FRKey key);
-	void virtual Draw();
 
 protected:
 	void virtual ClampPos();
