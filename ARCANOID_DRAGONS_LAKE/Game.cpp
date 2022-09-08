@@ -9,8 +9,12 @@ void Game::PreInit(int& width, int& height, bool& fullscreen)
 
 bool Game::Init()
 {
+	_brickCount = 8;
+
 	Vector2 screenSize;
 	getScreenSize(screenSize.x, screenSize.y);
+
+	Bricks();
 
 	screenSize.x /= 2;
 	screenSize.y = screenSize.y - screenSize.y / 4;
@@ -31,11 +35,24 @@ bool Game::Tick() {
 	drawTestBackground();
 
 	_platform->Draw();
-	_ball->Fly();
 	_ball->Draw();
+
+	_ball->Fly();
+
+	_isBricksAlive = false;
+	for (int i = 0; i < _brickCount; i++)
+	{
+		if (!_bricks[i].IsAlive()) continue;
+
+		_isBricksAlive = true;
+		_bricks[i].Draw();
+		_ball->HandleCollisionWithObject(&_bricks[i]);
+	}
+
 	_ball->HandleCollisionWithObject(_platform);
 
-	return false;
+
+	return false; //CheckWinLoseCondition();
 }
 
 void Game::onMouseMove(int x, int y, int xrelative, int yrelative) {
@@ -56,6 +73,40 @@ void Game::onKeyPressed(FRKey k) {
 }
 
 void Game::onKeyReleased(FRKey k) {
+}
+
+void Game::Bricks()
+{
+	Vector2Float startPos = Vector2Float(100, 100);
+
+	_bricks = new Brick[_brickCount]();
+
+	for (int i = 0; i < _brickCount; i++)
+	{
+		_bricks[i].SetScale(0.2);
+		Vector2 size = _bricks[i].GetSize();
+		_bricks[i].ChangePosition(startPos + Vector2Float((size.x) * i, 0));
+	}
+}
+
+bool Game::CheckWinLoseCondition()
+{
+	int x, y;
+	getScreenSize(x, y);
+
+	if (!_isBricksAlive)
+	{
+		cout << "YOU WIN!" << endl;
+		return true;
+	}
+	
+	else if (_ball->GetCenterPos().y >= y)
+	{
+		cout << "YOU LOSE" << endl;
+		return true;
+	}
+
+	return false;
 }
 
 void Game::LaunchBall(Vector2Float to)

@@ -1,17 +1,18 @@
 #include "Platform.h"
 
-Platform::Platform(Vector2 position, float size)
+Platform::Platform(Vector2 position, float scale)
 {
 	_level = 1;
 	_speed = 50;
-	_sprite = createSprite(_pathSpriteLevel_1);
+	_sprite = createSprite(_platformSprite);
 
 	int width{ 0 }, height{ 0 };
 	getSpriteSize(_sprite, width, height);
 
-	width *= size; height *= size;
+	width *= scale; height *= scale;
 	setSpriteSize(_sprite, width, height);
 
+	_scale = scale;
 	_position.x = position.x - width / 2; _position.y = position.y;
 }
 

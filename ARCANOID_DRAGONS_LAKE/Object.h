@@ -5,6 +5,12 @@
 class Object
 {
 public:
+
+	~Object()
+	{
+		destroySprite(_sprite);
+	}
+
 	void virtual SetPos(Vector2Float position)
 	{
 		_position = position;
