@@ -9,6 +9,11 @@
 #include "Ability.h"
 #include "SizeBuff.h"
 
+//So I didn't complete two additional features
+// First stackable buff, it's almost done, but I was stucked with undefined type error, I was like confused here
+// Second it's every 20 sec spawn ability in the middle of screen, i have Timer class so it's easy to finish that task
+// And I didn't complete comand line, but I think it's also easy, i can just set scale and change position little bit
+
 class Timer;
 using namespace std;
 

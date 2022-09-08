@@ -191,22 +191,6 @@ bool Game::CheckWinLoseCondition()
 	return false;
 }
 
-void Game::LaunchBall(Vector2Float to)
-{
-	using namespace std;
-
-	//Vector2Float directionVector = to - _ball->GetPos();
-	//Vector2Float normalVector = directionVector.normal();
-
-	//if (normalVector.y > 0)
-	//	normalVector *= -1;
-
-	//_ball->SetVelocity(normalVector);
-	//_platform->ball = NULL;
-
-	_isGameStarted = true;
-}
-
 const char* Game::GetTitle()
 {
 	return "Arcanoid";

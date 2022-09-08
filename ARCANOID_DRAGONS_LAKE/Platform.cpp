@@ -34,8 +34,21 @@ void Platform::HandleKey(FRKey key)
 	ChangePosition(direction);
 }
 
-void Platform::TakeBuff()
+void Platform::HandleBuffEffects()
 {
+	if (_buff == NULL) return;
+	else if (_buff->duration.IsComplete())
+	{
+		_buff->Reset(this);
+		return;
+	}
+
+	_buff->UseBuff(this);
+}
+
+void Platform::TakeBuff(SizeBuff buff)
+{
+	_buff = &buff;
 }
 
 void Platform::ClampPos()

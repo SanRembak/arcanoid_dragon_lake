@@ -36,6 +36,11 @@ public:
 		return spriteSize;
 	}
 
+	void virtual SetSize(Vector2 size)
+	{
+		setSpriteSize(_sprite, size.x, size.y);
+	}
+
 	void virtual SetScale(float scale)
 	{
 		int width, height;

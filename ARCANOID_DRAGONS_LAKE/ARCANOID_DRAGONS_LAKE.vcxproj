@@ -93,7 +93,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\framework\lib;E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\framework\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>FrameworkRelease_x64.lib;</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -116,7 +116,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\framework\lib;E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\framework\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>FrameworkRelease_x64.lib;</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -135,7 +135,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\framework\lib;E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\framework\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>FrameworkRelease_x64.lib;</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -158,7 +158,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\framework\lib;E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\Unity\Projects\Git\arcanoid_dragon_lake\ARCANOID_DRAGONS_LAKE\framework\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>FrameworkRelease_x64.lib;</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -167,11 +167,25 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ability.cpp" />
+    <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MovableObject.cpp" />
+    <ClCompile Include="Platform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ability.h" />
+    <ClInclude Include="MovableObject.h" />
+    <ClInclude Include="Ball.h" />
+    <ClInclude Include="Brick.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Platform.h" />
+    <ClInclude Include="SizeBuff.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

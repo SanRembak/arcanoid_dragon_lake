@@ -11,7 +11,7 @@ public:
 	Ability();
 	Ability(SizeBuff buff, const char* sprite, Vector2 pos, float scale);
 	void HandleCollisionWithPlatform(Platform* platform);
-	virtual void GiveBuff(Platform* platform) { platform->TakeBuff(); };
+	virtual void GiveBuff(Platform* platform) { platform->TakeBuff(_buff); };
 	bool isUsed;
 protected:
 	SizeBuff _buff;

@@ -4,12 +4,10 @@
 Ability::Ability()
 {
 	isUsed = false;
-	_speed = 4;
+	_speed = 2;
 
-	std::cout << Game::RandomRange(-10, 10) << std::endl;
-	std::cout << Game::RandomRange(-10, 10) << std::endl;
-	float xVelocity = Game::RandomRange(-10, 10) / (float)10;
-	float yVelocity = Game::RandomRange(-10, 10) / (float)10;
+	float xVelocity = Game::RandomRange(-5, 5) / (float)5;
+	float yVelocity = Game::RandomRange(-5, 5) / (float)5;
 
 	_velocity = Vector2Float(xVelocity, yVelocity);
 }
