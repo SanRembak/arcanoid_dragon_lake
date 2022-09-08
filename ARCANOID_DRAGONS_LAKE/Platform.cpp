@@ -34,6 +34,10 @@ void Platform::HandleKey(FRKey key)
 	ChangePosition(direction);
 }
 
+void Platform::TakeBuff()
+{
+}
+
 void Platform::ClampPos()
 {
 	int screenWidth, screenHeight;

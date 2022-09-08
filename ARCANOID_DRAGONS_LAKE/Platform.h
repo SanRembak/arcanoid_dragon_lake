@@ -10,7 +10,7 @@ public:
 	Platform(Vector2 position, float size);
 
 	void virtual HandleKey(FRKey key);
-
+	void TakeBuff();
 protected:
 	void virtual ClampPos();
 private:

@@ -9,6 +9,9 @@ void Game::PreInit(int& width, int& height, bool& fullscreen)
 
 bool Game::Init()
 {
+	srand(static_cast<unsigned int>(time(0)));
+	rand();
+
 	_brickCount = 8;
 	_ballsCount = 3;
 
@@ -22,6 +25,7 @@ bool Game::Init()
 
 	InitBricks();
 	InitBalls();
+	InitRandomBuff();
 
 	return true;
 }
@@ -34,6 +38,13 @@ bool Game::Tick() {
 	drawTestBackground();
 
 	_platform->Draw();
+
+	if (!_ability->isUsed)
+	{
+		_ability->Draw();
+		_ability->Fly();
+		_ability->HandleCollisionWithPlatform(_platform);
+	}
 
 	_isBallsAlive = false;
 	for (int j = 0; j < _ballsCount; j++)
@@ -131,6 +142,18 @@ void Game::InitBalls()
 		ballPos = _platform->GetCenterPos() + Vector2Float(-1 * ballSize.x * 0.5, -1 * ballSize.y * 1.5);
 		_balls[i].SetPos(ballPos);
 	}
+}
+
+void Game::InitRandomBuff()
+{
+	const char* sprite = "E:\\Unity\\Projects\\Git\\arcanoid_dragon_lake\\ARCANOID_DRAGONS_LAKE\\data\\abilities\\a_width+.png";
+
+	Vector2 screenSize, spriteSize;
+	getScreenSize(screenSize.x, screenSize.y);
+	_ability = new Ability(SizeBuff(), sprite, Vector2(0,0), 0.2);
+
+	spriteSize = _ability->GetSize();
+	_ability->SetPos(Vector2Float(screenSize.x / 2 - spriteSize.x / 2, screenSize.y / 2 - spriteSize.y / 2));
 }
 
 void Game::LaunchingBalls(int index)
